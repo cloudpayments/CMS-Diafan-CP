@@ -24,9 +24,9 @@
 http://domain.ru/payment/get/cloudpayments/check
 * **Уведомление о принятом платеже** (Pay):\
 http://domain.ru/payment/get/cloudpayments/pay
-* **Уведомление при отклоненном платеже* (Fail):\
+* **Уведомление при отклоненном платеже** (Fail):\
 http://domain.ru/payment/get/cloudpayments/fail
-* **Уведомление о возврате платежа* (Refund):\
+* **Уведомление о возврате платежа** (Refund):\
 http://domain.ru/payment/get/cloudpayments/refund
 
 Где domain.ru — доменное имя вашего сайта.
