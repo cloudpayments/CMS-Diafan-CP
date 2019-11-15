@@ -53,7 +53,7 @@ function set_order_status($diafan, $status_id, $pay) {
     {
         $status = DB::query_fetch_array("SELECT * FROM {shop_order_status} WHERE status='%s' LIMIT 1", $status_id);
         $order = DB::query_fetch_array("SELECT * FROM {shop_order} WHERE id=%d LIMIT 1", $pay['element_id']);
-        $diafan->_shop->order_set_status($order, $status);
+        $diafan->_order->set_status($order, $status);
     }
 }
 

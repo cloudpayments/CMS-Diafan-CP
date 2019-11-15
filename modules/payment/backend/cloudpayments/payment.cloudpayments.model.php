@@ -35,6 +35,7 @@ class Payment_cloudpayments_model extends Diafan {
             "description" => $pay["desc"], //назначение
             "amount"      => floatval($pay["summ"]), //сумма
             "currency"    => $params["cloudpayments_currency"], //валюта
+	        "skin"        => $params["cloudpayments_skin"],
             "invoiceId"   => $pay["element_id"], //номер заказа  (необязательно)
             "accountId"   => $customer_email, //идентификатор плательщика (необязательно)
             "email"       => $customer_email,
@@ -57,6 +58,7 @@ class Payment_cloudpayments_model extends Diafan {
         $result = array(
             "text"          => $pay["text"],
             "lang"          => $params["cloudpayments_language"],
+            "payment_scheme"=> $params["cloudpayments_payment_scheme"],
             "success_url"   => BASE_PATH_HREF . $cart_rewrite . "/step3/",
             "fail_url"      => BASE_PATH_HREF . $cart_rewrite . "/step4/",
             "widget_params" => to_json($widget_params),
@@ -69,8 +71,12 @@ class Payment_cloudpayments_model extends Diafan {
         $customer_receipt = array(
             'Items'          => array(),
             'taxationSystem' => str_replace("ts_", "", $params['cloudpayments_taxation_system']),
+	        'calculationPlace'=>'www.'.$_SERVER['SERVER_NAME'],
             'email'          => $customer_email,
-            'phone'          => $customer_phone
+            'phone'          => $customer_phone,
+            'amounts'        => array(
+                                "electronic" => floatval($pay["summ"]), // Сумма оплаты электронными деньгами
+                                )
         );
 
         $items = array();

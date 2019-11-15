@@ -4,6 +4,8 @@
 
 ### Возможности:  
 • Одностадийная схема оплаты;  
+• Двухстадийная схема оплаты;  
+• Выбор дизайн виджета;  
 • Поддержка онлайн-касс (ФЗ-54);  
 • Отправка чеков по email;  
 • Отправка чеков по SMS;  
@@ -26,6 +28,10 @@ http://domain.ru/payment/get/cloudpayments/check
 http://domain.ru/payment/get/cloudpayments/pay
 * **Уведомление при отклоненном платеже** (Fail):\
 http://domain.ru/payment/get/cloudpayments/fail
+* **Уведомление о подтверждении платежа** (Сonfirm):\
+http://domain.ru/payment/get/cloudpayments/confirm
+* **Уведомление об отменене платежа** (Сancel):\
+http://domain.ru/payment/get/cloudpayments/cancel
 * **Уведомление о возврате платежа** (Refund):\
 http://domain.ru/payment/get/cloudpayments/refund
 

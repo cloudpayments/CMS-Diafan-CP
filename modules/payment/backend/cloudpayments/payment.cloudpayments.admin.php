@@ -31,6 +31,15 @@ class Payment_cloudpayments_admin  extends Diafan {
                     'name' => 'Секретный ключ',
                     'help' => 'Обязательный секретный ключ. Находится в ЛК CloudPayments (Пароль для API).'
                 ),
+                'cloudpayments_payment_scheme' => array(
+                    'name'   => 'Схема платежа',
+                    'type'   => 'select',
+                    'help'   => 'Схемы проведения платежа',
+                    'select' => array(
+                        'charge' => 'Одностадийная',
+                        'auth'   => 'Двухстадийная',
+                    )
+                ),
                 'cloudpayments_receipt'         => array(
                     'name' => 'Онлайн-касса',
                     'type' => 'checkbox',
@@ -78,6 +87,16 @@ class Payment_cloudpayments_admin  extends Diafan {
                         'pt' => 'Португальский (CET)',
                     )
                 ),
+		        'cloudpayments_skin' => array(
+                    'name'   => 'Дизайн виджета',
+                    'type'   => 'select',
+                    'help' => 'Дизайн виджета',
+                    'select' => array(
+                        'classic' => 'Classic',
+                        'modern' => 'Modern',
+                        'mini' => 'Mini',
+                    )
+                ),
                 'cloudpayments_taxation_system' => array(
                     'name'   => 'Система налогообложения магазина',
                     'type'   => 'select',
@@ -99,9 +118,9 @@ class Payment_cloudpayments_admin  extends Diafan {
                         'vat_none' => 'НДС не облагается',
                         'vat_0'    => 'НДС 0%',
                         'vat_10'   => 'НДС 10%',
-                        'vat_18'   => 'НДС 18%',
+                        'vat_20'   => 'НДС 20%',
                         'vat_110'  => 'Расчетный НДС 10/110',
-                        'vat_118'  => 'Расчетный НДС 18/118',
+                        'vat_120'  => 'Расчетный НДС 20/120',
                     ),
                 ),
                 'cloudpayments_vat_delivery'             => array(
@@ -112,9 +131,9 @@ class Payment_cloudpayments_admin  extends Diafan {
                         'vat_none' => 'НДС не облагается',
                         'vat_0'    => 'НДС 0%',
                         'vat_10'   => 'НДС 10%',
-                        'vat_18'   => 'НДС 18%',
+                        'vat_20'   => 'НДС 20%',
                         'vat_110'  => 'Расчетный НДС 10/110',
-                        'vat_118'  => 'Расчетный НДС 18/118',
+                        'vat_120'  => 'Расчетный НДС 20/120',
                     ),
                 ),
                 'cloudpayments_notify_url' => array(
@@ -129,7 +148,7 @@ class Payment_cloudpayments_admin  extends Diafan {
               . 'URL для уведомлений <i class="tooltip fa fa-question-circle" title="Скопируйте и вставьте в соответствующие поля в ЛК CloudPayments"></i>'
               . '</div>';
         $baseUrl = BASE_PATH . 'payment/get/cloudpayments/';
-        foreach (array('check', 'pay', 'fail', 'refund') as $url) {
+        foreach (array('check', 'pay', 'fail', 'refund', 'confirm', 'cancel') as $url) {
             echo '<div class="unit">'
                 . '<p><b style="display:inline-block;width:50px;">' . ucfirst($url) . '</b>   <input readonly value="' . $baseUrl . $url . '"</p>'
                 . '<p><pre id="test_check"></pre></p>'

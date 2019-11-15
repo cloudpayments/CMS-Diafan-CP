@@ -18,7 +18,7 @@ if (! defined('DIAFAN'))
 <p><?= $result["text"]; ?></p>
 <div class="cloudpayments_pay"><a id="cloudpayments_pay" href="#" class="button"><?= $this->diafan->_('Оплатить', false); ?></a></div>
 
-<script src="https://widget.cloudpayments.ru/bundles/cloudpayments"></script>
+<script src="https://widget.cloudpayments.ru/bundles/cloudpayments?cms=Diafan"></script>
 
 <script>
     (function(show_widget_callback) {
@@ -37,7 +37,7 @@ if (! defined('DIAFAN'))
             evt.cancelBubble = true;
         }
         var widget = new cp.CloudPayments({language: '<?= $result['lang'] ?>'});
-        widget.charge(<?= $result['widget_params'] ?>, '<?= $result['success_url'] ?>', '<?= $result['fail_url'] ?>');
+        widget.<?= $result['payment_scheme'] ?>(<?= $result['widget_params'] ?>, '<?= $result['success_url'] ?>', '<?= $result['fail_url'] ?>');
     });
 </script>
 
